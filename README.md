@@ -40,10 +40,12 @@ pip install torch numpy matplotlib jupyter
 
 # Run examples
 cd part_1
-python example_usage.py
+python chapter_1_examples.py
+python chapter_2_examples.py
 
-# Or use Jupyter notebook
-jupyter lab geometric_vectors_demo.ipynb
+# Or use Jupyter notebooks
+jupyter lab chapter_1_demo.ipynb
+jupyter lab chapter_2_wedge_product_demo.ipynb
 ```
 
 ---
@@ -53,11 +55,14 @@ jupyter lab geometric_vectors_demo.ipynb
 ```
 gaOS/
 ├── README.md
-└── part_1/                             # Track I, Chapter 1
-    ├── README.md                       # Documentation
-    ├── geometric_vector.py             # Core implementation
-    ├── example_usage.py                # Examples
-    └── geometric_vectors_demo.ipynb    # Interactive notebook
+└── part_1/                                  # Track I: Foundations
+    ├── README.md                            # Documentation
+    ├── geometric_vector.py                  # Chapter 1: Core implementation
+    ├── chapter_1_examples.py                # Chapter 1: Examples
+    ├── chapter_1_demo.ipynb                 # Chapter 1: Interactive notebook
+    ├── chapter_2_wedge_product.py           # Chapter 2: Wedge product
+    ├── chapter_2_examples.py                # Chapter 2: Examples
+    └── chapter_2_wedge_product_demo.ipynb   # Chapter 2: Interactive notebook
 ```
 
 ---

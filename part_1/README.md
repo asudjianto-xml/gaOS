@@ -39,12 +39,12 @@ house = GeometricVector([2500, 3, 20], ['sqft', 'bedrooms', 'age'])
   - `WedgeProduct` class: Captures vector relationships
   - `GeometricVectorBatch` class: GPU-accelerated batch processing
 
-- **example_usage.py** - Quick start examples
+- **chapter_1_examples.py** - Quick start examples
   - Scalar trap problem demonstration
   - Law of Non-Interaction
   - All vector operations
 
-- **geometric_vectors_demo.ipynb** - Interactive Jupyter notebook
+- **chapter_1_demo.ipynb** - Interactive Jupyter notebook
 
 ### Chapter 2 Files
 - **chapter_2_wedge_product.py** - Wedge product implementation
