@@ -1,165 +1,106 @@
 # Geometric Algebra for Data Science
 
-**Rebuilding the Foundation of Data Science Through Geometry**
-
 > "What does this look like if we treat Data as Geometry?"
 
-This repository implements the concepts from the [Geometric Algebra for Data Science](https://agussudjianto.substack.com/p/geometric-algebra-for-data-science) series, providing practical Python/PyTorch implementations with GPU acceleration.
+This repository implements the concepts from the [Geometric Algebra for Data Science](https://agussudjianto.substack.com/p/geometric-algebra-for-data-science) series by Agus Sudjianto, providing practical Python/PyTorch implementations with GPU acceleration.
 
 ---
 
 ## The Mission
 
-Traditional data science treats data as lists of numbers, leading to the **Scalar Trap** - meaningless operations like adding square feet to bedrooms. This series reimagines data science by treating data as geometric objects with intrinsic structure.
+Rebuilding the data science stack using Geometric Algebra (GA). This series proposes a fundamental reframe:
 
-Instead of:
-```python
-house = [2500, 3, 20]  # Lost all meaning
-sum(house)  # = 2523 - What does this even mean?
-```
-
-We use:
-```python
-house = GeometricVector([2500, 3, 20], ['sqft', 'bedrooms', 'age'])
-# Each dimension maintains its semantic meaning
-```
+- **Probability** → Volume
+- **Correlation** → A Bivector's Shadow
+- **Neural Networks** → Coordinate Transformers
+- **Economic Stationarity** → Subspace Stability
 
 ---
 
-## Series Overview
+## Pragmatic GA Philosophy
 
-### Track I: Foundations (The New Language)
+Three core principles guide this implementation:
+
+1. **No Custom Libraries** — Uses NumPy and PyTorch instead of specialized GA software
+2. **Intuition First** — Prioritizes geometric understanding over formal proofs
+3. **Real-World Application** — Bridges abstract mathematics with practical high-dimensional implementation
+
+---
+
+## Five-Track Series
+
+### Track I: Foundations
 **Status: Chapter 1 Complete ✅**
 
-Redefining the atomic units of computation and introducing core GA operators.
+Introduces the Wedge Product and Geometric Product as fundamental operators for capturing area and unified geometric relationships.
 
+**Chapters:**
 1. **The Great Embedding: Escaping the Scalar Trap** ✅
-   - Why adding incompatible dimensions is mathematically illegal
-   - Orthogonal basis vectors and dimensional awareness
-   - `GeometricVector` implementation in Python
-
-2. **Beyond the Arrow: The Wedge Product** 🚧
-   - Limitations of cross products in high dimensions
-   - Measuring area and linear independence
-   - Antisymmetric outer product in PyTorch
-
+2. **Beyond the Arrow: The Wedge Product** 📋
 3. **The Master Algorithm: The Geometric Product** 📋
-   - Unifying dot and wedge products: $uv = u \cdot v + u \wedge v$
-   - Vector division and invertibility
-   - Algebraic manipulation of geometric objects
-
 4. **Rotors: How to Rotate in N-Dimensions** 📋
-   - Efficient O(N) rotations vs O(N²) rotation matrices
-   - Exponentials of bivectors
-   - Generalizing quaternions to any dimension
-
 5. **The Vector Derivative: Calculus without Indices** 📋
-   - Index-free calculus
-   - Geometric gradient visualization
-   - Custom autograd functions respecting geometric constraints
 
 ### Track II: Geometric Statistics 📋
-Geometric interpretation of descriptive statistics.
 
-- Statistical moments as geometric objects
-- Linear regression through geometric projection
-- Geometric covariance capturing hidden relationships
+Reframes statistical moments as geometric shapes; derives Linear Regression through geometric projection.
 
 ### Track III: Geometric Econometrics 📋
-Temporal evolution of geometric objects.
 
-- Time series as rotations in phase space
-- Cointegration reinterpreted geometrically
-- Dynamic models as geometric transformations
+Examines time-series through rotations in phase space; reveals lead-lag market relationships differently.
 
 ### Track IV: Classical Machine Learning 📋
-Geometric lens on standard algorithms.
 
-- SVMs and clustering geometrically
-- Information Volume for multicollinearity detection
-- Geometric feature selection
+Applies geometric lenses to SVMs, clustering, and feature selection using "Information Volume" concepts.
 
 ### Track V: Deep Geometric Learning 📋
-Neural architectures preserving geometric structure.
 
-- Rotor Layers (rotation without stretching)
-- Geometric Attention mechanisms
-- Manifold-direct loss optimization
-
----
-
-## Repository Structure
-
-```
-.
-├── README.md                    # This file
-├── CLAUDE.md                    # PyTorch GPU patterns & API reference
-├── part_1/                      # Track I: Foundations
-│   ├── README.md               # Part 1 specific documentation
-│   ├── geometric_vector.py     # Core GeometricVector implementation
-│   ├── example_usage.py        # Quick start examples
-│   └── geometric_vectors_demo.ipynb  # Interactive Jupyter notebook
-├── part_2/                      # Track II: Geometric Statistics (coming soon)
-├── part_3/                      # Track III: Geometric Econometrics (coming soon)
-├── part_4/                      # Track IV: Classical ML (coming soon)
-└── part_5/                      # Track V: Deep Geometric Learning (coming soon)
-```
+Develops Rotor Layers and Geometric Attention mechanisms that preserve symmetry in neural architectures.
 
 ---
 
 ## Quick Start
 
-### Prerequisites
-
-```bash
-# Python 3.8+
-# PyTorch with CUDA support (optional but recommended)
-pip install torch numpy matplotlib jupyter
-```
-
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/geometric-algebra-data-science.git
-cd geometric-algebra-data-science
+git clone https://github.com/asudjianto-xml/gaOS.git
+cd gaOS
+```
+
+### Prerequisites
+
+```bash
+pip install torch numpy matplotlib jupyter
 ```
 
 ### Run Examples
 
-```python
+```bash
 # Quick Python example
 cd part_1
 python example_usage.py
-```
 
-### Interactive Jupyter Notebook
-
-```bash
-cd part_1
+# Interactive Jupyter notebook
 jupyter lab geometric_vectors_demo.ipynb
-```
-
-Or access remotely:
-```bash
-jupyter lab --ip=0.0.0.0 --port=8888 geometric_vectors_demo.ipynb
 ```
 
 ---
 
-## Part 1: The Great Embedding
+## Track I, Chapter 1: The Great Embedding
 
-### Key Concepts
+### The Scalar Trap
 
-#### 1. The Scalar Trap
-Traditional approach loses dimensional meaning:
+Traditional data science treats data as raw numbers, losing dimensional meaning:
+
 ```python
-# Wrong: Treating multi-dimensional data as raw numbers
-house = [2500, 3, 20]
-sum(house)  # 2523 - Meaningless!
+# Wrong: Treating multi-dimensional data as mere numbers
+house = [2500, 3, 20]  # sqft, bedrooms, age
+sum(house)  # = 2523 - MEANINGLESS!
 ```
 
-#### 2. Geometric Vectors
-Maintain dimensional awareness:
+### The Solution: Geometric Vectors
+
 ```python
 from part_1.geometric_vector import GeometricVector, create_housing_vector
 
@@ -168,106 +109,85 @@ house2 = create_housing_vector(sqft=3000, bedrooms=4, age=15)
 
 # Safe operations - dimensions preserved
 combined = house1 + house2
-print(combined.get_component('sqft'))  # 5500
+print(combined.get_component('sqft'))  # 5500.0
 ```
 
-#### 3. Law of Non-Interaction
-Incompatible dimensions cannot mix:
+### Key Concepts
+
+**1. Law of Non-Interaction**
+
+Incompatible dimensions cannot be accidentally combined:
+
 ```python
 car = GeometricVector([150, 4, 8], ['horsepower', 'wheels', 'cylinders'])
-house + car  # ValueError: Cannot add vectors from different spaces!
+house1 + car  # ValueError: Cannot add vectors from different spaces!
 ```
 
-#### 4. Wedge Product
-Captures relationships without collapsing dimensions:
+**2. Wedge Product**
+
+Captures relationships without collapsing dimensional information:
+
 ```python
 wedge = house1 ^ house2  # Wedge product operator
 correlation = wedge.correlation_strength()
 # 0 = parallel (correlated), 1 = orthogonal (uncorrelated)
 ```
 
-#### 5. GPU Acceleration
-All operations automatically use CUDA when available:
+**3. GPU Acceleration**
+
+All operations automatically leverage CUDA when available:
+
 ```python
-device = get_device()  # Automatically detects GPU
-vector = GeometricVector([1, 2, 3], ['x', 'y', 'z'], device)
+from part_1.geometric_vector import GeometricVectorBatch
 
 # Batch processing on GPU
-batch = GeometricVectorBatch([v1, v2, v3, ...])
-distances = batch.pairwise_distances()  # Parallel on GPU
+batch = GeometricVectorBatch([house1, house2, ...])
+distances = batch.pairwise_distances()  # Computed in parallel
+magnitudes = batch.magnitudes()
+similarities = batch.gram_matrix()
 ```
 
 ---
 
-## Features
+## Repository Structure
 
-### ✅ Implemented (Part 1)
+```
+gaOS/
+├── README.md                           # This file
+└── part_1/                             # Track I, Chapter 1
+    ├── README.md                       # Chapter 1 documentation
+    ├── geometric_vector.py             # Core implementation
+    ├── example_usage.py                # Quick start examples
+    └── geometric_vectors_demo.ipynb    # Interactive notebook
+```
+
+---
+
+## Implementation Features
+
+### ✅ Completed (Track I, Chapter 1)
 
 - **GeometricVector Class**: Dimensionally-aware vectors with basis preservation
-- **Type Safety**: Prevents meaningless operations between incompatible spaces
-- **Rich Operations**: Magnitude, dot product, wedge product, projection, angles
+- **Type Safety**: Prevents meaningless operations via Law of Non-Interaction
+- **Wedge Product**: Captures correlations without losing structure
 - **GPU Acceleration**: Full PyTorch/CUDA support with automatic device detection
-- **Batch Processing**: Efficient parallel operations on GPU
-- **Comprehensive Examples**: Python scripts and Jupyter notebook
-- **Windows Compatible**: No Unicode characters in code
-
-### 🚧 In Progress
-
-- Extended wedge product operations
-- Geometric product implementation
-- Cross product comparison in high dimensions
+- **Batch Processing**: Efficient parallel operations
+- **Comprehensive Examples**: Python scripts and interactive Jupyter notebook
 
 ### 📋 Coming Soon
 
-- Rotors for N-dimensional rotations
-- Geometric calculus and derivatives
-- Geometric statistics
-- And more (Tracks II-V)
-
----
-
-## Implementation Philosophy
-
-This series emphasizes **pragmatism over purity**:
-
-- ✅ **Practical Tools**: Using NumPy and PyTorch, not specialized libraries
-- ✅ **Intuition First**: Understanding over formal proofs
-- ✅ **High-Dimensional Ready**: Scales from 3D examples to real-world datasets
-- ✅ **GPU Accelerated**: Leverages modern hardware for performance
-- ✅ **Production Ready**: Clean, tested, documented code
-
----
-
-## Use Cases
-
-### Data Science
-- Feature engineering with dimensional awareness
-- Correlation analysis beyond Pearson
-- Multicollinearity detection via Information Volume
-
-### Machine Learning
-- Dimensionally-aware embeddings
-- Geometric loss functions
-- Structure-preserving neural networks
-
-### Time Series Analysis
-- Market relationships through geometric transformations
-- Cointegration as geometric alignment
-- Phase space analysis
-
-### Econometrics
-- Dynamic models as rotations
-- Impulse response as geometric flow
-- Structural break detection
+- Track I, Chapters 2-5 (Wedge Product, Geometric Product, Rotors, Vector Derivatives)
+- Tracks II-V (Statistics, Econometrics, Classical ML, Deep Learning)
 
 ---
 
 ## Examples
 
-### Example 1: Housing Data
+### Housing Data Analysis
 
 ```python
 from part_1.geometric_vector import create_housing_vector
+import numpy as np
 
 house1 = create_housing_vector(2500, 3, 20)
 house2 = create_housing_vector(3000, 4, 15)
@@ -276,15 +196,15 @@ house2 = create_housing_vector(3000, 4, 15)
 similarity = house1.dot(house2)
 angle = house1.angle_with(house2)
 
-# Analyze relationship
+# Analyze geometric relationship
 wedge = house1 ^ house2
 correlation = wedge.correlation_strength()
 
 print(f"Angle: {np.degrees(angle):.2f} degrees")
-print(f"Correlation strength: {correlation:.4f}")
+print(f"Correlation: {correlation:.4f}")
 ```
 
-### Example 2: Financial Data
+### Financial Data
 
 ```python
 stock1 = GeometricVector([150.25, 1200000, 0.15],
@@ -292,98 +212,34 @@ stock1 = GeometricVector([150.25, 1200000, 0.15],
 stock2 = GeometricVector([148.50, 1500000, 0.18],
                          ['price', 'volume', 'volatility'])
 
-# Safe operations within same space
+# Safe operations within same geometric space
 portfolio = stock1 + stock2
 
-# Geometric analysis
+# Geometric relationship analysis
 wedge = stock1 ^ stock2
-relationship_strength = wedge.correlation_strength()
-```
-
-### Example 3: Batch Processing
-
-```python
-from part_1.geometric_vector import GeometricVectorBatch
-
-# Create batch of vectors
-vectors = [create_housing_vector(s, b, a)
-           for s, b, a in housing_data]
-
-batch = GeometricVectorBatch(vectors)
-
-# Efficient parallel operations on GPU
-magnitudes = batch.magnitudes()
-mean_vector = batch.mean()
-distances = batch.pairwise_distances()
-similarities = batch.gram_matrix()
+relationship = wedge.correlation_strength()
 ```
 
 ---
 
 ## Performance
 
-GPU acceleration provides significant speedups for batch operations:
+GPU acceleration provides significant speedups:
 
-| Operation | CPU (3000x3000) | GPU (3000x3000) | Speedup |
-|-----------|-----------------|-----------------|---------|
-| Matrix Multiply | 0.1234s | 0.0056s | 22x |
-| Batch Magnitudes | 0.0456s | 0.0021s | 22x |
-| Pairwise Distances | 0.2341s | 0.0098s | 24x |
+| Operation | CPU | GPU | Speedup |
+|-----------|-----|-----|---------|
+| Batch Magnitudes (3000 vectors) | 45.6ms | 2.1ms | 22x |
+| Pairwise Distances (3000×3000) | 234ms | 9.8ms | 24x |
+| Gram Matrix (3000×3000) | 123ms | 5.6ms | 22x |
 
 *Tested on NVIDIA GB10*
-
----
-
-## Documentation
-
-- **[CLAUDE.md](CLAUDE.md)**: Complete API reference and PyTorch GPU patterns
-- **[part_1/README.md](part_1/README.md)**: Detailed Part 1 documentation
-- **[Jupyter Notebook](part_1/geometric_vectors_demo.ipynb)**: Interactive tutorial
-
----
-
-## Contributing
-
-This is an educational project implementing concepts from the Geometric Algebra for Data Science series. Contributions are welcome!
-
-### How to Contribute
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Areas for Contribution
-
-- Additional examples and use cases
-- Performance optimizations
-- Documentation improvements
-- Bug fixes
-- Implementations of Tracks II-V
-
----
-
-## Testing
-
-```bash
-# Run Part 1 examples
-cd part_1
-python example_usage.py
-
-# Run demonstrations
-python geometric_vector.py
-
-# Run Jupyter notebook
-jupyter lab geometric_vectors_demo.ipynb
-```
 
 ---
 
 ## Requirements
 
 - Python 3.8+
-- PyTorch >= 2.0
+- PyTorch >= 2.0 (with CUDA support recommended)
 - NumPy >= 1.20
 - Matplotlib >= 3.3 (for visualizations)
 - Jupyter Lab (optional, for notebooks)
@@ -394,9 +250,33 @@ pip install torch numpy matplotlib jupyterlab
 
 ---
 
-## License
+## Documentation
 
-This project is part of the Geometric Algebra for Data Science series.
+- **[Series Overview](https://agussudjianto.substack.com/p/geometric-algebra-for-data-science)**: Main article introducing the five-track series
+- **[Chapter 1 Article](https://agussudjianto.substack.com/p/the-great-embedding-escaping-the)**: The Great Embedding
+- **[part_1/README.md](part_1/README.md)**: Detailed API reference for Chapter 1
+- **[Interactive Notebook](part_1/geometric_vectors_demo.ipynb)**: Hands-on tutorial with visualizations
+
+---
+
+## Contributing
+
+This is an educational project implementing concepts from the Geometric Algebra for Data Science series. Contributions welcome!
+
+### How to Contribute
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes
+4. Push and open a Pull Request
+
+### Areas for Contribution
+
+- Implementations of Track I, Chapters 2-5
+- Examples and use cases
+- Performance optimizations
+- Documentation improvements
+- Tracks II-V implementations
 
 ---
 
@@ -411,49 +291,19 @@ https://agussudjianto.substack.com/p/geometric-algebra-for-data-science
 
 ---
 
-## Roadmap
+## License
 
-### Short Term (Q1 2026)
-- ✅ Chapter 1: The Great Embedding
-- 🚧 Chapter 2: Wedge Product extensions
-- 📋 Chapter 3: Geometric Product
-- 📋 Chapter 4: Rotors
-- 📋 Chapter 5: Vector Derivatives
-
-### Medium Term (Q2-Q3 2026)
-- Track II: Geometric Statistics
-- Track III: Geometric Econometrics
-
-### Long Term (Q4 2026+)
-- Track IV: Classical Machine Learning
-- Track V: Deep Geometric Learning
-
----
-
-## Related Resources
-
-- **Series Introduction**: [Geometric Algebra for Data Science](https://agussudjianto.substack.com/p/geometric-algebra-for-data-science)
-- **Chapter 1**: [The Great Embedding - Escaping the Scalar Trap](https://agussudjianto.substack.com/p/the-great-embedding-escaping-the)
-- **PyTorch Documentation**: [pytorch.org](https://pytorch.org)
-- **Geometric Algebra**: Dorst, L., Fontijne, D., & Mann, S. (2007). *Geometric Algebra for Computer Science*
+Educational implementation of concepts from the Geometric Algebra for Data Science series.
 
 ---
 
 ## Contact
 
-For questions, suggestions, or discussions:
-
 - **Series Author**: [Agus Sudjianto on Substack](https://agussudjianto.substack.com)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/geometric-algebra-data-science/issues)
+- **Repository Issues**: [GitHub Issues](https://github.com/asudjianto-xml/gaOS/issues)
 
 ---
 
-## Acknowledgments
+**Built with PyTorch, NumPy, and Geometric Algebra**
 
-This implementation is based on the Geometric Algebra for Data Science series by Agus Sudjianto. Special thanks to the geometric algebra community and PyTorch team for providing the tools that make this work possible.
-
----
-
-**Built with 💙 using PyTorch, NumPy, and Geometric Algebra**
-
-**GPU-Accelerated • Production-Ready • Pedagogically Clear**
+*Pragmatic • GPU-Accelerated • Intuition-First*
