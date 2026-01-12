@@ -21,8 +21,10 @@ This repository provides practical Python/PyTorch implementations with GPU accel
 ## Current Status
 
 **Track I, Chapter 1: The Great Embedding - Escaping the Scalar Trap** ✅
-
 [Read the article](https://agussudjianto.substack.com/p/the-great-embedding-escaping-the)
+
+**Track I, Chapter 2: Beyond the Arrow - The Wedge Product** ✅
+Article scheduled for January 14, 2026
 
 ---
 
