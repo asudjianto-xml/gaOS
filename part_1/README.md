@@ -60,6 +60,13 @@ house = GeometricVector([2500, 3, 20], ['sqft', 'bedrooms', 'age'])
   - Multicollinearity in features
   - High-dimensional embeddings (100D)
 
+- **chapter_2_wedge_product_demo.ipynb** - Interactive Jupyter notebook
+  - Cross product vs wedge product comparison
+  - Visualizations of bivectors
+  - Independence testing examples
+  - GPU batch processing demo
+  - Hands-on exercises
+
 ## Setup
 
 Environment is pre-configured at:
