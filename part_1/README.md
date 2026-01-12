@@ -1,14 +1,21 @@
-# Track I, Chapter 1: The Great Embedding - Escaping the Scalar Trap
+# Track I: Foundations
 
 Part of the [Geometric Algebra for Data Science](https://agussudjianto.substack.com/p/geometric-algebra-for-data-science) series.
 
+## Chapters
+
+### Chapter 1: The Great Embedding - Escaping the Scalar Trap ✅
 **Article**: [The Great Embedding](https://agussudjianto.substack.com/p/the-great-embedding-escaping-the)
 
-## Overview
+Implements a dimensionally-aware vector system using PyTorch with GPU acceleration.
+Solves the "Scalar Trap" problem where multi-dimensional data is incorrectly treated as
+raw scalar arrays.
 
-This chapter implements a dimensionally-aware vector system using PyTorch with GPU acceleration.
-It solves the "Scalar Trap" problem where multi-dimensional data is incorrectly treated as
-raw scalar arrays, leading to meaningless operations.
+### Chapter 2: Beyond the Arrow - The Wedge Product ✅
+**Article**: Coming January 14, 2026
+
+Implements the Wedge Product (∧) - a superior alternative to the cross product that works
+in ANY dimension. Measures linear independence and creates bivectors (oriented areas).
 
 ## The Problem
 
@@ -26,22 +33,32 @@ house = GeometricVector([2500, 3, 20], ['sqft', 'bedrooms', 'age'])
 
 ## Files
 
+### Chapter 1 Files
 - **geometric_vector.py** - Main implementation
   - `GeometricVector` class: Dimensionally-aware vectors
   - `WedgeProduct` class: Captures vector relationships
   - `GeometricVectorBatch` class: GPU-accelerated batch processing
-  - Demonstrations of all features
 
-- **example_usage.py** - Quick start guide
-  - Shows the scalar trap problem
-  - Demonstrates Law of Non-Interaction
-  - Examples of all vector operations
-  - GPU batch processing demo
+- **example_usage.py** - Quick start examples
+  - Scalar trap problem demonstration
+  - Law of Non-Interaction
+  - All vector operations
 
 - **geometric_vectors_demo.ipynb** - Interactive Jupyter notebook
-  - Step-by-step tutorial
-  - Visualizations and examples
-  - Hands-on exercises
+
+### Chapter 2 Files
+- **chapter_2_wedge_product.py** - Wedge product implementation
+  - `wedge_product_tensor()`: Compute u ∧ v as antisymmetric outer product
+  - `wedge_magnitude()`: Area of parallelogram
+  - `independence_strength()`: Measure of linear independence
+  - `BatchWedgeProduct`: GPU-accelerated batch processing
+
+- **chapter_2_examples.py** - Practical demonstrations
+  - 3D and 4D wedge products
+  - Cross product limitations
+  - Linear independence detection
+  - Multicollinearity in features
+  - High-dimensional embeddings (100D)
 
 ## Setup
 
